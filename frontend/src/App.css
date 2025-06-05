@@ -1,0 +1,316 @@
+:root {
+  --primary: #FF0745;
+  --secondary: #009688;
+  --header-bg: rgba(0, 150, 136, 0.44);
+  --button-bg: #D9D9D9;
+}
+
+body, html, #root, .app {
+  height: 100%;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: #ffffff;
+}
+
+.title {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 36px;
+  background: #fff;
+  z-index: 1100;
+  text-align: center;
+  font-size: 1.4em;
+  font-weight: bold;
+  margin: 0;
+  padding: 8px 0 4px 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eee;
+}
+
+.header {
+  position: fixed;
+  top: 36px;
+  left: 0;
+  width: 100vw;
+  height: 48px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  background: var(--header-bg);
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  padding-top: 84px; /* 36 (title) + 48 (header) */
+  box-sizing: border-box;
+}
+
+.menu-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 48px;
+  margin-left: 0;
+  margin-right: 8px;
+}
+
+.menu-vertical .dot {
+  width: 6px;
+  height: 6px;
+  background: #000;
+  border-radius: 50%;
+  margin: 1.5px 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.header-btn {
+  display: flex;
+  align-items: center;
+  background: var(--button-bg);
+  border: 1.5px solid var(--primary);
+  color: var(--primary);
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 6px 16px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  outline: none;
+}
+
+.header-btn svg {
+  margin-right: 6px;
+  vertical-align: middle;
+  min-width: 1px;
+  min-height: 18px;
+}
+
+/* TABLE CONTAINER */
+.table-container {
+  width: 100vw;
+  height: calc(100vh - 84px); /* fills below header+title */
+  overflow: auto;
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+}
+
+.spreadsheet-table {
+  min-width: 700px;
+  width: 200vw;
+  border-collapse: collapse;
+  margin: 0;
+  font-size: 0.95em;
+}
+
+.spreadsheet-table th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  border: 1.5px solid var(--primary);
+  padding: 8px 2px;
+  text-align: center;
+  background: #fff;
+  color: #222;
+  word-break: break-word;
+}
+
+.spreadsheet-table td {
+  border: 1.5px solid var(--primary);
+  padding: 8px 2px;
+  text-align: center;
+  background: rgba(0, 150, 136, 0.14);
+  word-break: break-word;
+}
+
+.status-btn {
+  background: #43a047;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 0.95em;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #e57373;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+/* ---------- MODAL STYLES ---------- */
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(0,150,136,0.22);
+  padding: 28px 32px 24px 32px;
+  min-width: 320px;
+  max-width: 90vw;
+  animation: fadeIn 0.2s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--secondary);
+  margin-bottom: 12px;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-form label {
+  display: block;
+  color: var(--secondary);
+  font-weight: 500;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 7px 12px;
+  border: 1.5px solid var(--primary);
+  border-radius: 8px;
+  margin-top: 3px;
+  font-size: 1em;
+}
+
+.modal-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 9px 22px;
+  font-weight: bold;
+  margin-top: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: #fff;
+}
+
+/* Distinct styles for search and filter buttons */
+.modal-btn.search {
+  background: var(--secondary);
+}
+
+.modal-btn.search:hover {
+  background: #00796b;
+}
+
+.modal-btn.filter {
+  background: var(--primary);
+}
+
+.modal-btn.filter:hover {
+  background: #d9003a;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.1em;
+    margin: 8px 0 0 0;
+    height: 32px;
+  }
+
+  .header {
+    min-height: 42px;
+    top: 32px;
+    height: 42px;
+  }
+
+  .app {
+    padding-top: 74px;
+  }
+
+  .menu-vertical {
+    width: 36px;
+    height: 52px;
+    margin-right: 4px;
+  }
+
+  .menu-vertical .dot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .header-actions {
+    gap: 6px;
+    margin-right: 4px;
+  }
+
+  .header-btn {
+    padding: 2px 8px;
+    font-size: 0.6em;
+    border-radius: 8px;
+  }
+
+  .table-container {
+    height: calc(100vh - 74px);
+  }
+
+  .spreadsheet-table th, .spreadsheet-table td {
+    padding: 10px 2px;
+    font-size: 0.87em;
+  }
+
+  .status-btn {
+    padding: 3px 7px;
+    font-size: 0.87em;
+  }
+
+  .modal-content {
+    min-width: 90vw;
+    padding: 18px 8px 14px 8px;
+  }
+}
+
+@media (max-width: 400px) {
+  .spreadsheet-table {
+    display: block;
+    overflow-x: auto;
+    font-size: 0.85em;
+  }
+}
