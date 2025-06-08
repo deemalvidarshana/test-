@@ -5,7 +5,8 @@ import FilterModal from './components/FilterModal';
 import SearchModal from './components/SearchModal';
 import './App.css';
 
-const BACKEND_URL = 'http://localhost:4000/api/sheet';
+//const BACKEND_URL = 'http://localhost:4000/api/sheet';
+const BACKEND_URL = 'https://test-production-7f4a.up.railway.app/api/sheet';
 
 function App() {
   const [rows, setRows] = useState([]);
